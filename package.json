@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "bulma": "^0.7.1",
+    "eslint": "^5.4.0",
     "eslint4b": "^5.4.0",
     "espree": "^4.0.0",
     "esutils": "^2.0.2",

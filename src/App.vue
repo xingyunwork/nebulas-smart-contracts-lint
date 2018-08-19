@@ -16,17 +16,17 @@ export default {
   name: 'app',
   data(){
       return {
-          linter: null,
-          config: {},
-          code: '===='
+          // linter: null,
+          // config: {},
+          // code: '===='
       }
   },
   components: {
     HelloWorld, EslintEditor, Editor
   },
   async mounted() {
-      const { default: Linter } = await import("eslint4b")
-      this.linter = new Linter()
+      // const { default: Linter } = await import("eslint4b")
+      // this.linter = new Linter()
   },
 }
 </script>

@@ -12,7 +12,9 @@
     import merge from 'merge';
     import config from '../config';
     import EslintEditor from "vue-eslint-editor"
-    import noSetIntervalRule from '../eslint/rules/no-setinterval';
+    // import noSetIntervalRule from '../eslint/rules/no-setinterval';
+
+
 
     export default {
         name: 'Editor',
@@ -21,13 +23,18 @@
                 linter: null,
                 config: merge({
                     "env": {
-                        "node": true
+                        "node": true,
+                        "es6": true
                     },
                     "rules":{
-                        "no-alert": 2,
+                        // "no-alert": 2,
                         // "no-undef": 2,
                         // "no-console": 2,
-                        "no-setinterval": 2,
+                        // "no-setinterval": 2,
+                        'no-async': 2,
+                        'no-window': 2,
+                        'available-libs': 2,
+                        'no-proxy': 2
                     }
                 }),
                 code: ''
@@ -47,13 +54,20 @@
             // linter.defineRule("indent", indent)
             // linter.defineRule("quotes", quotes)
             // linter.defineRule("semi", semi)
-            linter.defineRule("no-setinterval", noSetIntervalRule);
+            // linter.defineRule("no-setinterval", noSetIntervalRule);
+
+            (function () {
+                linter.defineRule("no-async", require('../eslint/rules/no-async').default);
+                linter.defineRule("no-window", require('../eslint/rules/no-window').default);
+                linter.defineRule("available-libs", require('../eslint/rules/available-libs').default);
+                linter.defineRule("no-proxy", require('../eslint/rules/no-proxy').default);
+            })();
 
             self.linter = linter;
 
 
 
-            fetch('contracts/setInterval.js')
+            fetch('contracts/contract.js')
                 .then((res)=>{
                     return res.text() // res.text()是一个Promise对象
                 })
