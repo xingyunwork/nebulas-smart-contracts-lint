@@ -9,34 +9,16 @@
 </template>
 
 <script>
-    import merge from 'merge';
-    import config from '../config';
+    import config from '../eslint-recommended';
     import EslintEditor from "vue-eslint-editor"
     // import noSetIntervalRule from '../eslint/rules/no-setinterval';
-
-
 
     export default {
         name: 'Editor',
         data(){
             return {
                 linter: null,
-                config: merge({
-                    "env": {
-                        "node": true,
-                        "es6": true
-                    },
-                    "rules":{
-                        // "no-alert": 2,
-                        // "no-undef": 2,
-                        // "no-console": 2,
-                        // "no-setinterval": 2,
-                        'no-async': 2,
-                        'no-window': 2,
-                        'available-libs': 2,
-                        'no-proxy': 2
-                    }
-                }),
+                config: config,
                 code: ''
             }
         },
@@ -57,10 +39,28 @@
             // linter.defineRule("no-setinterval", noSetIntervalRule);
 
             (function () {
-                linter.defineRule("no-async", require('../eslint/rules/no-async').default);
-                linter.defineRule("no-window", require('../eslint/rules/no-window').default);
-                linter.defineRule("available-libs", require('../eslint/rules/available-libs').default);
-                linter.defineRule("no-proxy", require('../eslint/rules/no-proxy').default);
+                // linter.defineRule("no-async", require('../eslint/rules/no-async').default);
+                // linter.defineRule("no-window", require('../eslint/rules/no-window').default);
+                // linter.defineRule("available-libs", require('../eslint/rules/available-libs').default);
+                // linter.defineRule("no-proxy", require('../eslint/rules/no-proxy').default);
+
+                // var rule = require('eslint-plugin-nebulas-contract/rules/no-window');
+                // console.log(rule);
+
+
+                linter.defineRule("no-window", require('eslint-plugin-nebulas-contract/rules/no-window'));
+                linter.defineRule("available-libs", require('eslint-plugin-nebulas-contract/rules/available-libs'));
+                linter.defineRule("contract-init", require('eslint-plugin-nebulas-contract/rules/contract-init'));
+                linter.defineRule("module-exports", require('eslint-plugin-nebulas-contract/rules/module-exports'));
+                linter.defineRule("no-dupe-keys-in-local-contract-storage", require('eslint-plugin-nebulas-contract/rules/no-dupe-keys-in-local-contract-storage'));
+                linter.defineRule("no-es6", require('eslint-plugin-nebulas-contract/rules/no-es6'));
+                linter.defineRule("no-settimeout", require('eslint-plugin-nebulas-contract/rules/no-settimeout'));
+                linter.defineRule("no-window", require('eslint-plugin-nebulas-contract/rules/no-window'));
+                linter.defineRule("valid-blockchain-api", require('eslint-plugin-nebulas-contract/rules/valid-blockchain-api'));
+                linter.defineRule("valid-event-api", require('eslint-plugin-nebulas-contract/rules/valid-event-api'));
+                linter.defineRule("valid-local-contract-storage-api", require('eslint-plugin-nebulas-contract/rules/valid-local-contract-storage-api'));
+
+
             })();
 
             self.linter = linter;
@@ -69,7 +69,7 @@
 
             fetch('contracts/contract.js')
                 .then((res)=>{
-                    return res.text() // res.text()是一个Promise对象
+                    return res.text()
                 })
                 .then((res)=>{
                     self.code = res;

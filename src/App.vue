@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import EslintEditor from "vue-eslint-editor"
+// import HelloWorld from './components/HelloWorld.vue'
+// import EslintEditor from "vue-eslint-editor"
 import Editor from './components/Editor.vue'
 
 export default {
@@ -22,7 +22,8 @@ export default {
       }
   },
   components: {
-    HelloWorld, EslintEditor, Editor
+    // HelloWorld, EslintEditor,
+    Editor
   },
   async mounted() {
       // const { default: Linter } = await import("eslint4b")

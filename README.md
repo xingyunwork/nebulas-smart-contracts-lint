@@ -14,7 +14,3 @@ yarn run serve
 ```
 yarn run build
 ```
-
-
-### 检查事项
-*   无效的方法列表 setInterval setTimeout
