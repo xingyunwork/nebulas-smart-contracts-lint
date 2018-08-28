@@ -50,7 +50,10 @@
 
                 linter.defineRule("no-window", require('eslint-plugin-nebulas-contract/rules/no-window'));
                 linter.defineRule("available-libs", require('eslint-plugin-nebulas-contract/rules/available-libs'));
-                linter.defineRule("contract-init", require('eslint-plugin-nebulas-contract/rules/contract-init'));
+
+                linter.defineRule("valid-contract", require('eslint-plugin-nebulas-contract/rules/valid-contract'));
+
+                // linter.defineRule("contract-init", require('eslint-plugin-nebulas-contract/rules/contract-init'));
                 linter.defineRule("module-exports", require('eslint-plugin-nebulas-contract/rules/module-exports'));
                 linter.defineRule("no-dupe-keys-in-local-contract-storage", require('eslint-plugin-nebulas-contract/rules/no-dupe-keys-in-local-contract-storage'));
                 linter.defineRule("no-es6", require('eslint-plugin-nebulas-contract/rules/no-es6'));
